@@ -1,11 +1,6 @@
-
+import News from "./News/News";
 function App() {
-  return (
-    <div>
-      React Api call
-    </div>
-    
-  );
+  return <News />
 }
 
 export default App;
