@@ -1,6 +1,7 @@
 import {React  ,useState} from 'react'
 import { ReactDOM  } from 'react'
 import {SingleNews} from './SingleNews'
+import axios from 'axios'
 
 
 
@@ -15,7 +16,7 @@ export const News = ()=> {
      }
 
      const getNews = ()  =>{
-         const url = 'https://newsapi.org/v2/everything?q=apple&from=2021-07-13&to=2021-07-13&sortBy=popularity&apiKey=28b97d72f5144c86ba7d64a9e9892654';
+         const url = 'https://newsapi.org/v2/everything?q=tesla&from=2021-07-13&to=2021-07-13&sortBy=popularity&apiKey=28b97d72f5144c86ba7d64a9e9892654';
           fetch(url)
          .then((response)=>{ return response.json()})
          .then((alldata)=>{
@@ -23,6 +24,18 @@ export const News = ()=> {
              console.log(alldata['articles']);
          })
      }
+
+     const getnewsbyaxiosmethod =()=>{
+        const url = 'https://newsapi.org/v2/everything?q=tesla&from=2021-07-13&to=2021-07-13&sortBy=popularity&apiKey=28b97d72f5144c86ba7d64a9e9892654';
+        axios.get(url)
+            .then((response)=>{
+                setNewsValue(response.data.articles);
+               console.log(response.data.articles);
+
+            });
+
+     }
+     
 
         
     return (
@@ -40,7 +53,7 @@ export const News = ()=> {
                  <ul> {renderItems()}</ul>
             </div>
             
-            <button onClick={()=>getNews()}>seeNews</button>
+            <button onClick={()=>getnewsbyaxiosmethod()}>seeNews</button>
         </div>
     )
     
