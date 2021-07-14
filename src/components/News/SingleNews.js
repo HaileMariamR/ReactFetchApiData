@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const SingleNews = (item)=>{
+export const SingleNews = ({item})=>{
 
     return(
         <li>
